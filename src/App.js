@@ -1,12 +1,26 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
+import { handleData } from './actions/common';
+import { connect } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      wud u rather.
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.handleData();
+  }
+
+  render() {
+    return (
+      <Router>
+        <div className="App">
+            <p>Wud u ratha</p>
+        </div>
+      </Router>
+    );
+  }
 }
 
-export default App;
+export default connect(
+  null,
+  { handleData }
+)(App);
